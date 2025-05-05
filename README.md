@@ -65,10 +65,11 @@ A real-time, web-based queue management system for public clinics in South Afric
    git clone https://github.com/yourusername/clinic-queue-system.git
    cd clinic-queue-system
 2. **Update Database Connection String**
-   ```
+ 
    "ConnectionStrings": {
   "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=ClinicQueueDb;Trusted_Connection=True;"
 }
+
 3. **Run Migrations**
 ```bash
 dotnet ef database update
@@ -78,12 +79,12 @@ dotnet ef database update
 dotnet run
 ```
 ## 🧪 Key Folders
-Controllers/        → MVC controllers (Patient, Admin)
-Models/             → EF Core models
-Views/              → Razor views (Live queue, dashboard, registration)
-Hubs/               → SignalR hub for real-time communication
-Data/               → EF Core DB context
-wwwroot/            → Static files
+- Controllers/        → MVC controllers (Patient, Admin)
+- Models/             → EF Core models
+- Views/              → Razor views (Live queue, dashboard, registration)
+- Hubs/               → SignalR hub for real-time communication
+- Data/               → EF Core DB context
+- wwwroot/            → Static files
 
 ## 🛡️ Future Improvements
 - Authentication and role-based access
