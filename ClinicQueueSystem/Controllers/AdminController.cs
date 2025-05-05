@@ -1,5 +1,9 @@
-using ClinicQueueSystem.Data;
 using Microsoft.AspNetCore.Mvc;
+using ClinicQueueSystem.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ClinicQueueSystem.Controllers
 {
@@ -12,18 +16,34 @@ namespace ClinicQueueSystem.Controllers
             _context = context;
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
-            var served = _context.Patients.Where(p => p.IsServed);
-            double avgWait = served.Any() ? served.Average(p => (DateTime.Now - p.RegistrationTime).TotalMinutes) : 0;
-            int peakHour = _context.Patients
+            var today = DateTime.Today;
+
+            var patientsToday = await _context.Patients
+                .Where(p => p.RegistrationTime.Date == today)
+                .ToListAsync();
+
+            var servedToday = patientsToday.Count(p => p.IsServed);
+            var emergencyCount = patientsToday.Count(p => p.IsEmergency);
+
+            var avgWaitTime = patientsToday
+                .Where(p => p.IsServed)
+                .Select(p => (DateTime.Now - p.RegistrationTime).TotalMinutes)
+                .DefaultIfEmpty(0)
+                .Average();
+
+            var peakHour = patientsToday
                 .GroupBy(p => p.RegistrationTime.Hour)
                 .OrderByDescending(g => g.Count())
                 .Select(g => g.Key)
                 .FirstOrDefault();
 
-            ViewBag.AverageWait = avgWait;
+            ViewBag.AvgWaitTime = Math.Round(avgWaitTime, 2);
             ViewBag.PeakHour = peakHour;
+            ViewBag.ServedToday = servedToday;
+            ViewBag.EmergencyCount = emergencyCount;
+
             return View();
         }
     }

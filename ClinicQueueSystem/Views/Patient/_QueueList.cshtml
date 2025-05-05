@@ -1,0 +1,23 @@
+@model IEnumerable<ClinicQueueSystem.Models.Patient>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Queue Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Emergency</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.QueueNumber</td>
+                <td>@p.Name</td>
+                <td>@p.Age</td>
+                <td>@(p.IsEmergency ? "Yes" : "No")</td>
+            </tr>
+        }
+    </tbody>
+</table>

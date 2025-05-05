@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BSQlPV4o4hOCQ16bLbsODsrz7alVzcpRQXZKtLWf/ig=",
+  "Hash": "PQ3Z//zzlE4ZOXDC7KzDxqnEtUY4haAmsy4C2U3YpJI=",
   "Source": "ClinicQueueSystem",
   "BasePath": "_content/ClinicQueueSystem",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Lehlonolo\\Desktop\\Local Clinic Queue System\\Local-Clinic-Queue-System\\ClinicQueueSystem\\wwwroot\\js\\queue.js",
+      "SourceId": "ClinicQueueSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lehlonolo\\Desktop\\Local Clinic Queue System\\Local-Clinic-Queue-System\\ClinicQueueSystem\\wwwroot\\",
+      "BasePath": "_content/ClinicQueueSystem",
+      "RelativePath": "js/queue.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\queue.js"
     },
     {
       "Identity": "C:\\Users\\Lehlonolo\\Desktop\\Local Clinic Queue System\\Local-Clinic-Queue-System\\ClinicQueueSystem\\wwwroot\\js\\site.js",

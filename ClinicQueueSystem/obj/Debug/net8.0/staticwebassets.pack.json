@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Lehlonolo\\Desktop\\Local Clinic Queue System\\Local-Clinic-Queue-System\\ClinicQueueSystem\\wwwroot\\js\\queue.js",
+      "PackagePath": "staticwebassets\\js\\queue.js"
+    },
+    {
       "Id": "C:\\Users\\Lehlonolo\\Desktop\\Local Clinic Queue System\\Local-Clinic-Queue-System\\ClinicQueueSystem\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
