@@ -39,17 +39,31 @@ namespace ClinicQueueSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Patient patient)
         {
-            if (!ModelState.IsValid) return View(patient);
+            if (ModelState.IsValid)
+            {
+                patient.RegistrationTime = DateTime.Now;
 
-            patient.RegistrationTime = DateTime.Now;
-            patient.QueueNumber = await _context.Patients.CountAsync() + 1;
-            patient.IsServed = false;
+                // Automatically serve emergency patients
+                if (patient.IsEmergency)
+                {
+                    patient.IsServed = true;
+                }
 
-            _context.Patients.Add(patient);
-            await _context.SaveChangesAsync();
+                _context.Patients.Add(patient);
+                await _context.SaveChangesAsync();
 
-            await _hubContext.Clients.All.SendAsync("QueueUpdated");
-            return RedirectToAction("Confirmation", new { id = patient.Id });
+                // Notify clients about the queue update
+                await _hubContext.Clients.All.SendAsync("QueueUpdated");
+
+                if (patient.IsEmergency)
+                {
+                    return RedirectToAction("Confirmation", new { id = patient.Id });
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(patient);
         }
 
         public async Task<IActionResult> Confirmation(int id)
