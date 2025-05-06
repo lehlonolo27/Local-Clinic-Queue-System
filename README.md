@@ -64,20 +64,33 @@ A real-time, web-based queue management system for public clinics in South Afric
    ```bash
    git clone https://github.com/yourusername/clinic-queue-system.git
    cd clinic-queue-system
+   ```
+
 2. **Update Database Connection String**
- 
+
+   Update the `DefaultConnection` string in `appsettings.json`:
+   ```json
    "ConnectionStrings": {
-  "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=ClinicQueueDb;Trusted_Connection=True;"
-}
+     "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=ClinicQueueDb;Trusted_Connection=True;"
+   }
+   ```
 
 3. **Run Migrations**
-```bash
-dotnet ef database update
-```
+
+   Apply the database migrations:
+   ```bash
+   dotnet ef database update
+   ```
+
 4. **Run App**
-```bash
-dotnet run
-```
+
+   Start the application:
+   ```bash
+   dotnet run
+   ```
+
+---
+
 ## 🧪 Key Folders
 - Controllers/        → MVC controllers (Patient, Admin)
 - Models/             → EF Core models
@@ -86,18 +99,19 @@ dotnet run
 - Data/               → EF Core DB context
 - wwwroot/            → Static files
 
+---
+
 ## 🛡️ Future Improvements
 - Authentication and role-based access
-
 - SMS/Email queue alerts
-
 - Mobile-responsive enhancements
-
 - Unit + integration testing
 
+---
+
 ## 👨‍💻 Author
-Lehlonolo Mokoena
-🎓 Software Graduate
-📍 South Africa
-📧 mokoenalehlonolo27@gmail.com
-🔗 LinkedIn | GitHub
+Lehlonolo Mokoena  
+🎓 Software Development Graduate  
+📍 South Africa  
+📧 mokoenalehlonolo27@gmail.com  
+
