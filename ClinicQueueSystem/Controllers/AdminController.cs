@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using ClinicQueueSystem.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace ClinicQueueSystem.Controllers
 {
@@ -56,6 +58,50 @@ namespace ClinicQueueSystem.Controllers
                 .ToListAsync();
 
             return View(patientsServedToday);
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Admins.Add(admin);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Login");
+            }
+            return View(admin);
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(string username, string password)
+        {
+            var admin = await _context.Admins
+                .FirstOrDefaultAsync(a => a.Username == username && a.Password == password);
+
+            if (admin != null)
+            {
+                HttpContext.Session.SetString("AdminUsername", admin.Username);
+                return RedirectToAction("Dashboard");
+            }
+
+            ViewBag.Error = "Invalid username or password.";
+            return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

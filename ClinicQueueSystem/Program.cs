@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSession(); // Add this line
 
 var app = builder.Build();
 
@@ -27,10 +28,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseSession(); // Add this line
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Patient}/{action=Index}/{id?}");
 
-app.MapHub<QueueHub>("/queueHub");
+app.MapHub<QueueHub>("/");
 
 app.Run();
