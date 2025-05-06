@@ -55,7 +55,17 @@ namespace ClinicQueueSystem.Controllers
         public async Task<IActionResult> Confirmation(int id)
         {
             var patient = await _context.Patients.FindAsync(id);
-            return View(patient);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new ConfirmationViewModel
+            {
+                Message = $"Patient {patient.Name} has been successfully registered with Queue Number {patient.QueueNumber}."
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
