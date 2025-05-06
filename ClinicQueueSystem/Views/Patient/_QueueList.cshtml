@@ -7,6 +7,7 @@
             <th>Name</th>
             <th>Age</th>
             <th>Emergency</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +18,19 @@
                 <td>@p.Name</td>
                 <td>@p.Age</td>
                 <td>@(p.IsEmergency ? "Yes" : "No")</td>
+                <td>
+                    @if (!p.IsServed)
+                    {
+                        <form asp-action="ServePatient" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@p.Id" />
+                            <button type="submit" class="btn btn-success btn-sm">Serve</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Served</span>
+                    }
+                </td>
             </tr>
         }
     </tbody>

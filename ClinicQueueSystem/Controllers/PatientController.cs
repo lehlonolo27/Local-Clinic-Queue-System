@@ -91,5 +91,22 @@ namespace ClinicQueueSystem.Controllers
                 .ToListAsync();
             return PartialView("_QueuePartial", queue);
         }
+
+        public async Task<IActionResult> ServePatient(int id)
+        {
+            var patient = await _context.Patients.FindAsync(id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+            patient.IsServed = true;
+            await _context.SaveChangesAsync();
+
+            // Notify clients about the queue update
+            await _hubContext.Clients.All.SendAsync("QueueUpdated");
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
