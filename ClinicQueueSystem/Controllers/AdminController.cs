@@ -46,5 +46,16 @@ namespace ClinicQueueSystem.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> PatientsServedToday()
+        {
+            var today = DateTime.Today;
+
+            var patientsServedToday = await _context.Patients
+                .Where(p => p.IsServed && p.RegistrationTime.Date == today)
+                .ToListAsync();
+
+            return View(patientsServedToday);
+        }
     }
 }
