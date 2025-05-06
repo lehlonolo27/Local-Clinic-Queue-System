@@ -1,6 +1,9 @@
 using ClinicQueueSystem.Data;
 using ClinicQueueSystem.Hubs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +12,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddSession(); // Add this line
+builder.Services.AddSession();
+
+// Add JWT Authentication
 
 var app = builder.Build();
 
@@ -25,9 +30,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseSession(); // Add this line
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

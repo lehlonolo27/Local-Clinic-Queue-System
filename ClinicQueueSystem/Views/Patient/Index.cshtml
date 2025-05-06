@@ -1,8 +1,10 @@
 @model IEnumerable<ClinicQueueSystem.Models.Patient>
 
-<h2>Live Queue</h2>
-<div id="queueList">
-    @await Html.PartialAsync("_QueueList", Model)
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Live Queue</h2>
+    <div id="queueList" class="table-responsive">
+        @await Html.PartialAsync("_QueueList", Model)
+    </div>
 </div>
 
 @section Scripts {

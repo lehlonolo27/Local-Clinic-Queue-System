@@ -2,27 +2,43 @@
     ViewBag.Title = "Admin Dashboard";
 }
 
-<h2>📊 Admin Dashboard</h2>
-
-<table class="table table-bordered">
-    <tr>
-        <th>📅 Patients Served Today</th>
-        <td>@ViewBag.ServedToday</td>
-    </tr>
-    <tr>
-        <th>🚨 Emergency Cases Today</th>
-        <td>@ViewBag.EmergencyCount</td>
-    </tr>
-    <tr>
-        <th>🕒 Average Wait Time (mins)</th>
-        <td>@ViewBag.AvgWaitTime</td>
-    </tr>
-    <tr>
-        <th>⏰ Peak Hour</th>
-        <td>@ViewBag.PeakHour:00</td>
-    </tr>
-</table>
-
-<p>
-    <a asp-action="PatientsServedToday" class="btn btn-primary">View Patients Served Today</a>
-</p>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📊 Admin Dashboard</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">📅 Patients Served Today</h5>
+                    <p class="card-text display-6">@ViewBag.ServedToday</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">🚨 Emergency Cases Today</h5>
+                    <p class="card-text display-6">@ViewBag.EmergencyCount</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">🕒 Average Wait Time (mins)</h5>
+                    <p class="card-text display-6">@ViewBag.AvgWaitTime</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">⏰ Peak Hour</h5>
+                    <p class="card-text display-6">@ViewBag.PeakHour:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a asp-action="PatientsServedToday" class="btn btn-primary btn-lg">View Patients Served Today</a>
+    </div>
+</div>

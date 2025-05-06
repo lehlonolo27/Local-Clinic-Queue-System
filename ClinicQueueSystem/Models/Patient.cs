@@ -9,5 +9,6 @@ namespace ClinicQueueSystem.Models
         public DateTime RegistrationTime { get; set; }
         public int QueueNumber { get; set; }
         public bool IsServed { get; set; }
+        public string Password { get; set; } // Add this property
     }
 }

@@ -172,3 +172,4 @@ C:\Users\Lehlonolo\Desktop\Local Clinic Queue System\Local-Clinic-Queue-System\C
 C:\Users\Lehlonolo\Desktop\Local Clinic Queue System\Local-Clinic-Queue-System\ClinicQueueSystem\obj\Debug\net8.0\ClinicQueueSystem.pdb
 C:\Users\Lehlonolo\Desktop\Local Clinic Queue System\Local-Clinic-Queue-System\ClinicQueueSystem\obj\Debug\net8.0\ClinicQueueSystem.genruntimeconfig.cache
 C:\Users\Lehlonolo\Desktop\Local Clinic Queue System\Local-Clinic-Queue-System\ClinicQueueSystem\obj\Debug\net8.0\ref\ClinicQueueSystem.dll
+C:\Users\Lehlonolo\Desktop\Local Clinic Queue System\Local-Clinic-Queue-System\ClinicQueueSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
