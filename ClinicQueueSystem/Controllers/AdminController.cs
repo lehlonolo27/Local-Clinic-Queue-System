@@ -72,9 +72,10 @@ namespace ClinicQueueSystem.Controllers
             {
                 _context.Admins.Add(admin);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Login");
+                return RedirectToAction("Dashboard", "Admin"); // Redirect to Dashboard
             }
-            return View(admin);
+
+            return View(admin); // Return to the registration form if validation fails
         }
 
         public IActionResult Login()
